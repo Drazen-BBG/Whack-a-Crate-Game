@@ -9,7 +9,7 @@ public class Target : MonoBehaviour
 
     //My variables, not to use hard coding in my methods. 
     private float minSpeed = 12.0f;
-    private float maxSpeed = 18.0f;
+    private float maxSpeed = 15.0f;
     private float maxTorque = 10.0f;
     private float xRange = 4.0f;
     private float ySpawnPosition = -1.0f;
