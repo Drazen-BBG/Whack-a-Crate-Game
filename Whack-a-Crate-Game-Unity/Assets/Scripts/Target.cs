@@ -33,6 +33,18 @@ public class Target : MonoBehaviour
         
     }
 
+    //Execute code when clicked inside a collider 
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
+    //Execute the code when enter collider trigger, we will use it on the sensor game object which has a collider trigger 
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
+
     //My Methods
 
     //Returning random speed UP force
