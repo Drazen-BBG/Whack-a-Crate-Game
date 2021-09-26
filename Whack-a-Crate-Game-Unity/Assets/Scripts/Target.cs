@@ -34,16 +34,20 @@ public class Target : MonoBehaviour
     }
 
     //My Methods
+
+    //Returning random speed UP force
     Vector3 RandomForce()
     {
         return Vector3.up * Random.Range(minSpeed, maxSpeed);
     }
 
+    //Returning a random float value for the purpose to fill the values of AddTorque
     float RandomTorque()
     {
         return Random.Range(-maxTorque, maxTorque);
     }
 
+    //Returning a Vector3 random X position with a set Y and Z
     Vector3 RandomSpawnPositition()
     {
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPosition, 0);
