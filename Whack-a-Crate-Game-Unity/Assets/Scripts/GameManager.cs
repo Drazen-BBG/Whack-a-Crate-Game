@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     //List of Game Objects called targets, we will set list size in Unity Inspector drag-doping the Game Objects 
     public List<GameObject> targets;
+
+    public TextMeshProUGUI scoreText;
+    private int score;
 
     private float spawnRate = 3.0f;
 
@@ -14,6 +18,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTarget());
+
+        score = 0;
+        scoreText.text = "Score: " + score;
     }
 
     // Update is called once per frame
