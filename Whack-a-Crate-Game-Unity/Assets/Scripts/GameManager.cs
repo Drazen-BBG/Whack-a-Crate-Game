@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     //List of Game Objects called targets, we will set list size in Unity Inspector drag-doping the Game Objects 
     public List<GameObject> targets;
 
-    public TextMeshProUGUI scoreText;
-    private int score;
-
     private float spawnRate = 3.0f;
+
+    //Creating TMP instance
+    public TextMeshProUGUI scoreText;
+    //Variable to hold score
+    private int score;
 
 
     // Start is called before the first frame update
@@ -20,7 +22,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
 
         score = 0;
-        scoreText.text = "Score: " + score;
+
+        
+        
     }
 
     // Update is called once per frame
@@ -39,5 +43,12 @@ public class GameManager : MonoBehaviour
         }
 
         
+    }
+
+    //My method to increase score by the amount entering through the parameter
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
     }
 }

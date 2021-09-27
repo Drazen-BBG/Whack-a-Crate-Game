@@ -6,6 +6,8 @@ public class Target : MonoBehaviour
 {
     //Accessing RigidBody of all objects who have Target script attached
     private Rigidbody target_RB;
+    //Creating GameManager instance, that is a class instance
+    private GameManager gameManager;
 
     //My variables, not to use hard coding in my methods. 
     private float minSpeed = 12.0f;
@@ -14,11 +16,16 @@ public class Target : MonoBehaviour
     private float xRange = 4.0f;
     private float ySpawnPosition = -1.0f;
 
+    
+
     // Start is called before the first frame update
     void Start()
     {
         //Assigning RB
         target_RB = GetComponent<Rigidbody>();
+        //Setting gameManager to the class attached to the GameObject named Game Manager and than getting its component of type GameManager. Which is the class itself 
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         //Adding Up force with an Impulse ForceMode and giving torque to crates
         target_RB.AddForce(RandomForce(), ForceMode.Impulse);
         target_RB.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
@@ -37,6 +44,7 @@ public class Target : MonoBehaviour
     private void OnMouseDown()
     {
         Destroy(gameObject);
+        gameManager.UpdateScore(5);
     }
 
     //Execute the code when enter collider trigger, we will use it on the sensor game object which has a collider trigger 
