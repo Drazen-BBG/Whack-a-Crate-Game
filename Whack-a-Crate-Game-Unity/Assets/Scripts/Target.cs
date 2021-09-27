@@ -8,6 +8,8 @@ public class Target : MonoBehaviour
     private Rigidbody target_RB;
     //Creating GameManager instance, that is a class instance
     private GameManager gameManager;
+    //
+    public ParticleSystem explosionParticle;
 
     //My variables, not to use hard coding in my methods. 
     private float minSpeed = 12.0f;
@@ -25,6 +27,8 @@ public class Target : MonoBehaviour
         target_RB = GetComponent<Rigidbody>();
         //Setting gameManager to the class attached to the GameObject named Game Manager and than getting its component of type GameManager. Which is the class itself 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        
+
 
         //Adding Up force with an Impulse ForceMode and giving torque to crates
         target_RB.AddForce(RandomForce(), ForceMode.Impulse);
@@ -45,6 +49,7 @@ public class Target : MonoBehaviour
     {
         Destroy(gameObject);
         gameManager.UpdateScore(pointValue);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
     }
 
     //Execute the code when enter collider trigger, we will use it on the sensor game object which has a collider trigger 
